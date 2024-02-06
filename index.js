@@ -1,13 +1,10 @@
-const app = require("express")();
+const express = require("express");
+const app = express();
 const PORT = process.env.PORT || 8080;
 
-app.get("/tshirt", (request, response) => {
-    response.status(200).send({
-        color: "blue",
-        size: "L",
-    });
-});
+app.use(express.json());
 
-app.post("/tshirt/:id");
+const webhooksRouter = require("./routes/webhook");
+app.use("/webhook", webhooksRouter);
 
-app.listen(PORT, () => console.log(`Alive on http://localhost:${PORT}`));
+app.listen(PORT, () => console.log(`Listening on port ${PORT}`));

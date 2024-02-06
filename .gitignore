@@ -1,2 +1,6 @@
 TT_API_KEY
 node_modules/
+.env
+db/session.sql
+.vscode/
+sample_output.json
